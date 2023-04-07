@@ -1,9 +1,10 @@
+<script defer src="js/users-table-controller.js"></script>
 <div class="page-header">
 <h1>PHP Test Application</h1>
 </div>
 
 <div class="panel panel-default">
-<table class="table table-striped">
+<table id='users-table' class="table table-striped">
 	<thead>
 		<tr>
 			<th scope="col">Name</th>
@@ -22,27 +23,31 @@
 	</tbody>
 </table>
 </div>
+
 <div class="panel panel-default">
     <div class="panel-heading">Add new user</div>
       <div class="panel-body">
-        <form class="form-horizontal" method="post" action="create.php">
-            <div class="form-group">
+        <form onsubmit="event.preventDefault();" id="add-new-user-form" class="form-horizontal">
+            <div id="group-name" class="form-group">
                 <label for="name" class="col-sm-2 control-label">Name:</label>
                 <div class="col-sm-6">
                     <input class="form-control" name="name" type="text"  id="name"/>
                 </div>
+                <span class="help-block"></span>
             </div>
-            <div class="form-group">
+            <div id="group-email" class="form-group">
                 <label for="email" class="col-sm-2 control-label">E-mail:</label>
                 <div class="col-sm-6">
                     <input class="form-control" name="email" type="text" id="email"/>
                 </div>
+                <span class="help-block"></span>
             </div>
-            <div class="form-group">
+            <div id="group-city" class="form-group">
                 <label for="city" class="col-sm-2 control-label">City:</label>
                 <div class="col-sm-6">
                     <input class="form-control" name="city" type="text" id="city"/>
                 </div>
+                <span class="help-block"></span>
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-4">
