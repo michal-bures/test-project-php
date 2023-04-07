@@ -1,11 +1,14 @@
+<div class="page-header">
 <h1>PHP Test Application</h1>
+</div>
 
-<table>
+<div class="panel panel-default">
+<table class="table table-striped">
 	<thead>
 		<tr>
-			<th>Name</th>
-			<th>E-mail</th>
-			<th>City</th>
+			<th scope="col">Name</th>
+			<th scope="col">E-mail</th>
+			<th scope="col">City</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -17,18 +20,36 @@
 		</tr>
 		<?}?>
 	</tbody>
-</table>				
-
-<form method="post" action="create.php">
-	
-	<label for="name">Name:</label>
-	<input name="name" input="text" id="name"/>
-	
-	<label for="email">E-mail:</label>
-	<input name="email" input="text" id="email"/>
-	
-	<label for="city">City:</label>
-	<input name="city" input="text" id="city"/>
-	
-	<button>Create new row</button>
-</form>
+</table>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">Add new user</div>
+      <div class="panel-body">
+        <form class="form-horizontal" method="post" action="create.php">
+            <div class="form-group">
+                <label for="name" class="col-sm-2 control-label">Name:</label>
+                <div class="col-sm-6">
+                    <input class="form-control" name="name" type="text"  id="name"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email" class="col-sm-2 control-label">E-mail:</label>
+                <div class="col-sm-6">
+                    <input class="form-control" name="email" type="text" id="email"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="city" class="col-sm-2 control-label">City:</label>
+                <div class="col-sm-6">
+                    <input class="form-control" name="city" type="text" id="city"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-4">
+                    <button class="btn btn-primary" type="submit">Create new row</button>
+                </div>
+            </div>
+        </form>
+      </div>
+    </div>
+</div>
