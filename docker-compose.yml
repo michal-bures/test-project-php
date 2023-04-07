@@ -1,0 +1,30 @@
+version: "3.8"
+services:
+  php-apache:
+    build: .
+    ports:
+      - "3000:80"
+    env_file: .env
+    volumes:
+      - ./:/var/www/html
+    networks:
+      - test-project-network
+  mysql:
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: $MYSQL_PASSWORD
+      MYSQL_DATABASE: $MYSQL_DATABASE
+    networks:
+      - test-project-network
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8081:8080"
+networks:
+  test-project-network:
+    driver: bridge
+volumes:
+  data:
