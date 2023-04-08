@@ -66,8 +66,9 @@ class User extends BaseModel{
     }
 
     private function sanitizePhoneNumber($value) {
-      $value = filter_var($value, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-      $value = preg_replace('/[^+0-9]/', '', $value);
+      $value = filter_var($value, FILTER_SANITIZE_SPECIAL_CHARS);
+      # remove all whitespace from the phone numbers
+      $value = preg_replace('/\s+/', '', $value);
       return $value;
     }
 

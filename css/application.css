@@ -4,7 +4,7 @@
     --even-row-color: white;
 }
 
-/* USERS TABLE STYLES */
+/* USERS TABLE */
 
 /* Highlighting new row added to the table*/
 @keyframes highlight-odd {
@@ -30,4 +30,3 @@
 #users-table > tbody > tr.new-row:nth-child(even) {
     animation: highlight-even 2s ease-out !important;
 }
-

@@ -9,7 +9,7 @@ const DOMTemplates = {
     errorMessage: (error) => `<span class="glyphicon glyphicon-remove" aria-hidden="true"></span class="text-success"> ${escapeHTML(error)}`
 }
 
-$(document).ready(function () {
+addEventListener("DOMContentLoaded", () => {
     const dom = {
         usersTableBody: document.querySelector('#users-table > tbody'),
         addUserForm: {
@@ -38,11 +38,16 @@ $(document).ready(function () {
             .then(handleAddUserRequestSuccess)
             .catch(handleAddUserRequestError)
     });
+    //controller is ready => enable the submit button
+    dom.addUserForm.inputs.submit.disabled = false
 
     function submitForm(event) {
         setFormState('submitting')
 
         const formData = new FormData(event.target)
+        // the append statements below should not be necessary in theory, but somehow I couldn't get the FormData
+        // to load from the form element automatically and I don't have enough time to investigate further,
+        // so here goes
         formData.append('name', dom.addUserForm.inputs.name.value)
         formData.append('city', dom.addUserForm.inputs.city.value)
         formData.append('email', dom.addUserForm.inputs.email.value)
@@ -67,11 +72,11 @@ $(document).ready(function () {
             case 'submitting':
                 notifications.hide()
                 Object.values(inputs).forEach(input => input.disabled = true)
-                inputs.submit.innerText = 'Adding user...'
+                inputs.submit.innerText = 'Adding...'
                 break;
             case 'ready':
                 Object.values(inputs).forEach(input => input.disabled = false)
-                inputs.submit.innerText = 'Add user'
+                inputs.submit.innerText = 'ADD USER'
                 break;
         }
     }
@@ -85,7 +90,7 @@ $(document).ready(function () {
         }
     }
 
-    function handleAddUserRequestError(error) {
+    function handleAddUserRequestError() {
         notifications.showError('Oops, something went wrong! Please check your network connection and try again.')
     }
 
@@ -97,7 +102,7 @@ $(document).ready(function () {
     function renderValidationErrors(errors = {}) {
         Object.values(dom.addUserForm.formGroups).forEach(formGroup=> {
             formGroup.classList.remove('has-error')
-            formGroup.querySelector('.help-block').textContet=''
+            formGroup.querySelector('.help-block').textContent=''
         })
 
         for (const [fieldKey, errorMessage] of Object.entries(errors)) {
