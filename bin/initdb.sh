@@ -9,14 +9,14 @@ SCRIPT_DIR=$( dirname "$0"; )
 ROOT_DIR="${SCRIPT_DIR}/.."
 
 source "${ROOT_DIR}/.env"
-
 SQL_SCRIPT="
    DROP DATABASE IF EXISTS ${MYSQL_DATABASE};
    CREATE DATABASE ${MYSQL_DATABASE};
-   USE ${MYSQL_DATABASE}
+   USE ${MYSQL_DATABASE};
    $( cat "${SCRIPT_DIR}/../database/schema.sql")
+   $( cat "${SCRIPT_DIR}"/../database/migrations/*.sql)
 "
 
-echo "${SQL_SCRIPT}" | docker-compose exec -T mysql mysql -u root --password="${MYSQL_PASSWORD}"
+echo "${SQL_SCRIPT}" | docker-compose exec -T mysql mysql -u "${MYSQL_USER}" --password="${MYSQL_PASSWORD}"
 
-echo "Database schema and content should be ready!"
+echo "Database schema and content initialized!"

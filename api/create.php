@@ -5,9 +5,10 @@ $app = require_once dirname(__FILE__)."/../core/app.php";
 $user = new User($app->db);
 // Insert it to database with POST data
 $result = $user->insert(array(
-	'name' => $_POST['name'] ?? '',
-	'email' => $_POST['email'] ?? '',
-	'city' => $_POST['city']  ?? ''
+	'name' => $_POST['name'] ?? NULL,
+	'email' => $_POST['email'] ?? NULL,
+	'city' => $_POST['city'] ?? NULL,
+	'phone' => $_POST['phone'] ?? NULL
 ));
 
 // Return result as json

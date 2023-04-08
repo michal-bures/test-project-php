@@ -95,10 +95,16 @@ class BaseModel {
 			return $ret;
 		}
 		// Parse null values
-		if($value === null)return 'NULL';
+		if($value === null) return 'NULL';
 		// Escape string values
-		if(!is_numeric($value))return "'".htmlentities(addslashes($value))."'"; 
-		return $value;
+
+		// I've gone ahead and removed an exception here when the string is_numeric, because:
+		// - choosing how to escape string should be done based on the type in the schema if anything,
+		//   NOT based on if the value happens to look numeric (such approach for example has the side effect of
+		//   stripping the leading "+" from any string that starts with one, trimming leading zeroes, etc.)
+		// - we're not really storing any numbers in the db so far (and no, I don't think it's a great idea to store
+		//   phone number as a numeric type)
+		return "'".htmlentities(addslashes($value))."'";
 	}
 	
 	/**

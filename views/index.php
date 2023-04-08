@@ -1,4 +1,4 @@
-<script defer src="js/users-table-controller.js"></script>
+<script src="js/users-table-controller.js"></script>
 <div class="page-header">
 <h1>PHP Test Application</h1>
 </div>
@@ -10,6 +10,7 @@
 			<th scope="col">Name</th>
 			<th scope="col">E-mail</th>
 			<th scope="col">City</th>
+			<th scope="col">Phone Number</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -18,6 +19,7 @@
 			<td><?=$user->getName()?></td>
 			<td><?=$user->getEmail()?></td>
 			<td><?=$user->getCity()?></td>
+			<td><?=$user->getPhoneNumber()?></td>
 		</tr>
 		<?}?>
 	</tbody>
@@ -49,10 +51,18 @@
                 </div>
                 <span class="help-block"></span>
             </div>
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-4">
-                    <button class="btn btn-primary" type="submit">Create new row</button>
+            <div id="group-phone" class="form-group">
+                <label for="phone" class="col-sm-2 control-label">Phone:</label>
+                <div class="col-sm-6">
+                    <input class="form-control" name="phone" type="tel" id="phone" placeholder="+420 123456789"/>
                 </div>
+                <span class="help-block"></span>
+            </div>
+            <div id="group-submit" class="form-group">
+                <div class="col-sm-offset-2 col-sm-3">
+                    <button id="submit-button" class="btn btn-primary" type="submit">Add user</button>
+                </div>
+                 <span class="help-block"></span>
             </div>
         </form>
       </div>
