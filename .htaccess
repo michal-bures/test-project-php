@@ -1,4 +1,10 @@
 DirectoryIndex index.php
 
 RewriteEngine On
-RewriteRule ^.+$ / [R=302,L]
+
+# Allow assets and API routes
+RewriteCond %{REQUEST_URI} !^/(js|css|api)
+# Allow root route
+RewriteCond %{REQUEST_URI} !^/$
+# Everything else is 4040
+RewriteRule ^ - [R=404,L]

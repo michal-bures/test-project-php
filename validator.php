@@ -52,7 +52,7 @@ class FormValidator {
     }
 
     public function required($value) {
-      if (empty($value)) return "This field is required.";
+      if (empty($value)) return "Field is required.";
     }
 
     public function phoneNumber($value) {

@@ -12,7 +12,6 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/application.css">
     
-	<script type="text/javascript" charset="utf-8" src="js/bootstrap.min.js"></script>
 
   </head>
   <body>
