@@ -1,0 +1,4 @@
+DirectoryIndex index.php
+
+RewriteEngine On
+RewriteRule ^.+$ / [R=302,L]

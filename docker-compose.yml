@@ -18,13 +18,7 @@ services:
       MYSQL_DATABASE: $MYSQL_DATABASE
     networks:
       - test-project-network
-  adminer:
-    image: adminer
-    restart: always
-    ports:
-      - "8081:8080"
 networks:
   test-project-network:
-    driver: bridge
 volumes:
   data:
