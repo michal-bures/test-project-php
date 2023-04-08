@@ -1,10 +1,9 @@
-<script src="js/users-table-controller.js"></script>
 <div class="page-header">
 <h1>PHP Test Application</h1>
 </div>
 
 <div class="panel panel-default">
-<table id='users-table' class="table table-striped">
+<table id='users-table' class="table">
 	<thead>
 		<tr>
 			<th scope="col">Name</th>
@@ -26,10 +25,12 @@
 </table>
 </div>
 
+<script src="js/users-table-controller.js"></script>
+
 <div class="panel panel-default">
     <div class="panel-heading">Add new user</div>
       <div class="panel-body">
-        <form onsubmit="event.preventDefault();" id="add-new-user-form" class="form-horizontal">
+        <form id="add-new-user-form" class="form-horizontal">
             <div id="group-name" class="form-group">
                 <label for="name" class="col-sm-2 control-label">Name:</label>
                 <div class="col-sm-6">

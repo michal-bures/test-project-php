@@ -1,5 +1,5 @@
 const DOMTemplates = {
-    usersRow: ({ name, email, city, phone }) => `<tr>
+    usersRow: ({ name, email, city, phone }) => `<tr class="new-row">
             <td>${escapeHTML(name)}</td>
             <td>${escapeHTML(email)}</td>
             <td>${escapeHTML(city)}</td>
@@ -34,25 +34,24 @@ $(document).ready(function () {
 
     dom.addUserForm.formElement.addEventListener("submit", (event) => {
         event.preventDefault();
-        submitForm()
+        submitForm(event)
             .then(handleAddUserRequestSuccess)
             .catch(handleAddUserRequestError)
     });
 
-    function submitForm() {
-        const { inputs } = dom.addUserForm;
-        const formData = {
-            name: inputs.name.value,
-            email: inputs.email.value,
-            city: inputs.city.value,
-            phone: inputs.phone.value
-        };
+    function submitForm(event) {
         setFormState('submitting')
+
+        const formData = new FormData(event.target)
+        formData.append('name', dom.addUserForm.inputs.name.value)
+        formData.append('city', dom.addUserForm.inputs.city.value)
+        formData.append('email', dom.addUserForm.inputs.email.value)
+        formData.append('phone', dom.addUserForm.inputs.phone.value)
 
         return fetch(
             "api/create.php", {
-                method: "post",
-                body: JSON.stringify(formData)
+                method: "POST",
+                body: formData
             }
         ).then(response => {
             if (!response.ok) {
@@ -78,7 +77,6 @@ $(document).ready(function () {
     }
 
     function handleAddUserRequestSuccess(data) {
-        console.log('SUCCESS', data)
         renderValidationErrors(data.errors)
         if (data.success) {
             notifications.showSuccess('User added!')
@@ -93,7 +91,7 @@ $(document).ready(function () {
 
 
     function addUserRowToTable(user) {
-        dom.usersTableBody.append(DOMTemplates.usersRow(user))
+        dom.usersTableBody.insertAdjacentHTML('beforeend', DOMTemplates.usersRow(user))
     }
 
     function renderValidationErrors(errors = {}) {
@@ -125,7 +123,6 @@ function escapeHTML(unsafeText) {
     return div.innerHTML;
 }
 
-const MESSAGE_COOLDOWN_IN_MS = 5000
 class Notifications {
     timer = undefined
     formGroupElement = undefined
@@ -153,7 +150,7 @@ class Notifications {
     clearAutoHideTimer() {
         if (this.timer) clearTimeout(this.timer)
     }
-    scheduleAutoHide(delayMs = MESSAGE_COOLDOWN_IN_MS) {
+    scheduleAutoHide(delayMs = 5000) {
         this.clearAutoHideTimer()
         this.timer = setTimeout(() => this.hide(), delayMs)
     }

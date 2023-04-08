@@ -2,5 +2,4 @@
 .project
 .idea
 /.env
-/config/database.php
 

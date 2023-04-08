@@ -1,0 +1,33 @@
+:root {
+    --highlight-color: #337ab7;
+    --odd-row-color: #f9f9f9;
+    --even-row-color: white;
+}
+
+/* USERS TABLE STYLES */
+
+/* Highlighting new row added to the table*/
+@keyframes highlight-odd {
+    0% { background-color: var(--highlight-color); }
+    50% { background-color: var(--odd-row-color); }
+}
+@keyframes highlight-even {
+    0% { background-color: var(--highlight-color); }
+    50% { background-color: var(--even-row-color); }
+}
+
+/* using this instead of bootstraps built-in striped-table to avoid conflict with the new row highlighting */
+#users-table > tbody > tr:nth-child(odd) {
+    background-color: var(--odd-row-color)
+}
+#users-table > tbody > tr:nth-child(even) {
+    background-color: var(--even-row-color)
+}
+
+#users-table > tbody > tr.new-row:nth-child(odd) {
+    animation: highlight-odd 2s ease-out !important;
+}
+#users-table > tbody > tr.new-row:nth-child(even) {
+    animation: highlight-even 2s ease-out !important;
+}
+
