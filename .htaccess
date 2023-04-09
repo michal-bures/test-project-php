@@ -6,10 +6,10 @@ Header set X-Frame-Options "DENY"
 Header set Content-Security-Policy "default-src 'self'; frame-ancestors 'none'; form-action 'self';"
 
 # Allow assets, api routes and the root route, return 404 for anything else
-RewriteCond %{REQUEST_URI} !^/(js|css|api|fonts)
+RewriteCond %{REQUEST_URI} !^/(js|css|api|fonts|favicon.ico)
 RewriteCond %{REQUEST_URI} !^/$
 RewriteRule ^ - [R=404,L]
 
-# Redirect http to https
+# Redirect http to https (comment out in development mode!)
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]

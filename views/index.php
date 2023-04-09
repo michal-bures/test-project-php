@@ -2,7 +2,7 @@
 <h1>PHP Test Application</h1>
 </div>
 
-<div class="panel panel-default">
+<div class="panel panel-default table-responsive">
 <table id='users-table' class="table">
 	<thead>
 		<tr>
