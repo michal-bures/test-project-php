@@ -48,3 +48,8 @@
     font-style: italic;
     text-align: center;
 }
+
+/* enforced minimum width for filter input */
+#filter-city {
+    min-width: 120px;
+}

@@ -20,7 +20,7 @@
                   <span class="input-group-addon"><span class="glyphicon glyphicon-filter" aria-hidden="true"></span></span>
                </div>
 			</th>
-			<th>
+			<th></th>
 		</tr>
 	</thead>
 	<tbody>
