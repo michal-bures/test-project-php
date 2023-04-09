@@ -6,18 +6,35 @@
 <table id='users-table' class="table">
 	<thead>
 		<tr>
-			<th scope="col">Name</th>
-			<th scope="col">E-mail</th>
-			<th scope="col">City</th>
-			<th scope="col">Phone Number</th>
+			<th scope="col" class="col-sm-3">Name</th>
+			<th scope="col" class="col-sm-3">E-mail</th>
+			<th scope="col" class="col-sm-3">City</th>
+			<th scope="col" class="col-sm-3">Phone Number</th>
+		</tr>
+		<tr>
+			<th></th>
+			<th></th>
+			<th>
+			   <div class="input-group">
+			      <input class="form-control" type="text" id="filter-city" placeholder="Filter city"></input>
+                  <span class="input-group-addon"><span class="glyphicon glyphicon-filter" aria-hidden="true"></span></span>
+               </div>
+			</th>
+			<th>
 		</tr>
 	</thead>
 	<tbody>
+		<tr id="filter-status-row" class="hidden warning">
+		    <td colspan="4" >
+		      <span id="filter-status-message"></span>
+              <button type="button" class="close" id="reset-filter-button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		    </td>
+		</tr>
 		<?foreach($users as $user){?>
-		<tr>
+		<tr class="user-row">
 			<td><?=$user->getName()?></td>
 			<td><?=$user->getEmail()?></td>
-			<td><?=$user->getCity()?></td>
+			<td class="city-cell"><?=$user->getCity()?></td>
 			<td><?=$user->getPhoneNumber()?></td>
 		</tr>
 		<?}?>

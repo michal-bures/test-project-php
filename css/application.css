@@ -4,6 +4,10 @@
     --even-row-color: white;
 }
 
+.hidden {
+    display: none
+}
+
 /* USERS TABLE */
 
 /* Highlighting new row added to the table*/
@@ -29,4 +33,16 @@
 }
 #users-table > tbody > tr.new-row:nth-child(even) {
     animation: highlight-even 2s ease-out;
+}
+
+/* limit maximum cell width to prevent very long strings from breaking table layout */
+#users-table > tbody > tr > td {
+    max-width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#filter-status-row {
+    font-style: italic;
+    text-align: center;
 }
