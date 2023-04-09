@@ -49,28 +49,28 @@
         <form id="add-new-user-form" class="form-horizontal">
             <div id="group-name" class="form-group">
                 <label for="name" class="col-sm-2 control-label">Name:</label>
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <input class="form-control" name="name" type="text"  id="name"/>
                 </div>
                 <span class="help-block col-sm-4"></span>
             </div>
             <div id="group-email" class="form-group">
                 <label for="email" class="col-sm-2 control-label">E-mail:</label>
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <input class="form-control" name="email" type="email" id="email"/>
                 </div>
                 <span class="help-block col-sm-4"></span>
             </div>
             <div id="group-city" class="form-group">
                 <label for="city" class="col-sm-2 control-label">City:</label>
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <input class="form-control" name="city" type="text" id="city"/>
                 </div>
                 <span class="help-block col-sm-4"></span>
             </div>
             <div id="group-phone" class="form-group">
                 <label for="phone" class="col-sm-2 control-label">Phone:</label>
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <input class="form-control" name="phone" type="tel" id="phone" placeholder="+420 123456789"/>
                 </div>
                 <span class="help-block col-sm-4"></span>
