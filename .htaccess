@@ -1,10 +1,15 @@
 DirectoryIndex index.php
-
 RewriteEngine On
 
-# Allow assets and API routes
-RewriteCond %{REQUEST_URI} !^/(js|css|api)
-# Allow root route
+# basic measures against XSS and clickjacking
+Header set X-Frame-Options "DENY"
+Header set Content-Security-Policy "default-src 'self'; frame-ancestors 'none'; form-action 'self';"
+
+# Allow assets, api routes and the root route, return 404 for anything else
+RewriteCond %{REQUEST_URI} !^/(js|css|api|fonts)
 RewriteCond %{REQUEST_URI} !^/$
-# Everything else is 4040
 RewriteRule ^ - [R=404,L]
+
+# Redirect http to https
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
