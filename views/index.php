@@ -40,7 +40,7 @@
             <div id="group-email" class="form-group">
                 <label for="email" class="col-sm-2 control-label">E-mail:</label>
                 <div class="col-sm-6">
-                    <input class="form-control" name="email" type="text" id="email"/>
+                    <input class="form-control" name="email" type="email" id="email"/>
                 </div>
                 <span class="help-block col-sm-4"></span>
             </div>
