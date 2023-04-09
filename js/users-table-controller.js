@@ -123,7 +123,7 @@ window.addEventListener("DOMContentLoaded", () => {
         })
 
         for (const [fieldKey, errorMessage] of Object.entries(errors)) {
-            const formGroup = dom.addUserForm.formGroups[fieldKey]
+            const formGroup = dom.addUserForm.formGroups[fieldKey];
             if (formGroup) {
                 formGroup.classList.add('has-error');
                 formGroup.querySelector('.help-block').textContent = errorMessage;
@@ -144,13 +144,13 @@ window.addEventListener("DOMContentLoaded", () => {
         dom.userRows().forEach(trElement => {
             const city = trElement.querySelector("td.city-cell").textContent;
             const matches = city.toLowerCase().includes(filterValue.toLowerCase());
-            showElementIf(trElement, matches)
+            showElementIf(trElement, matches);
             if (!matches) ++hiddenRows;
         })
 
-        showElementIf(dom.usersTable.filterStatusRow, hiddenRows>0)
+        showElementIf(dom.usersTable.filterStatusRow, hiddenRows>0);
         if (hiddenRows > 0) {
-            dom.usersTable.filterStatusMessage.innerText = `${hiddenRows} rows are hidden by active filter.`
+            dom.usersTable.filterStatusMessage.innerText = getHiddenRowsMessage(hiddenRows);
         }
     }
 });
@@ -167,6 +167,14 @@ function escapeHTML(unsafeText) {
     const div = document.createElement('div');
     div.innerText = unsafeText;
     return div.innerHTML;
+}
+
+function getHiddenRowsMessage(n) {
+    if (n === 1) {
+        return "1 row is hidden by active filter.";
+    } else {
+        return `${n} rows are hidden by active filter.`;
+    }
 }
 
 class Notifications {
