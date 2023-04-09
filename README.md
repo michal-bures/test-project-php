@@ -6,6 +6,7 @@ Things that I would ideally also implement, but didn't get to in the given time 
 - validation on client side
 - thorough review of base_model.php for SQL injection vulnerabilities (all the SQL stitching seems very dangerous)
 - add linter and formatter
+- add basic unit test coverage
 - js minification and polyfills in case older browser support is required
 - monitoring (logging, client-side error tracking, analytics)
 - move things into a dedicated folder for served files rather than relying on correctly configured .htaccess
