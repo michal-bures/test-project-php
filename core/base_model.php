@@ -99,9 +99,9 @@ class BaseModel {
 		// Escape string values
 
 		// I've gone ahead and removed an exception here when the string is_numeric, because:
-		// - choosing how to escape string should be done based on the type in the schema if anything,
-		//   NOT based on if the value happens to look numeric (such approach for example has the side effect of
-		//   stripping the leading "+" from any string that starts with one, trimming leading zeroes, etc.)
+		// - choosing how to escape string should take into account the type in the schema,
+		//   the current approach was for example stripping the leading "+" from phone numbers when passed in
+		//   as string, and could have other unforseen side-effects
 		// - we're not really storing any numbers in the db so far (and no, I don't think it's a great idea to store
 		//   phone number as a numeric type)
 		return "'".htmlentities(addslashes($value))."'";

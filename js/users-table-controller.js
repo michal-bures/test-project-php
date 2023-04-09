@@ -35,8 +35,8 @@ addEventListener("DOMContentLoaded", () => {
     dom.addUserForm.formElement.addEventListener("submit", (event) => {
         event.preventDefault();
         submitForm(event)
-            .then(handleAddUserRequestSuccess)
-            .catch(handleAddUserRequestError)
+            .then(handleAddUserResponse)
+            .catch(handleAddUserError)
     });
     //controller is ready => enable the submit button
     dom.addUserForm.inputs.submit.disabled = false
@@ -81,7 +81,7 @@ addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    function handleAddUserRequestSuccess(data) {
+    function handleAddUserResponse(data) {
         renderValidationErrors(data.errors)
         if (data.success) {
             notifications.showSuccess('User added!')
@@ -90,7 +90,7 @@ addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    function handleAddUserRequestError() {
+    function handleAddUserError() {
         notifications.showError('Oops, something went wrong! Please check your network connection and try again.')
     }
 
