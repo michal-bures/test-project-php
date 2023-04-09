@@ -25,8 +25,8 @@
 }
 
 #users-table > tbody > tr.new-row:nth-child(odd) {
-    animation: highlight-odd 2s ease-out !important;
+    animation: highlight-odd 2s ease-out;
 }
 #users-table > tbody > tr.new-row:nth-child(even) {
-    animation: highlight-even 2s ease-out !important;
+    animation: highlight-even 2s ease-out;
 }
