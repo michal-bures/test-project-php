@@ -21,7 +21,9 @@
 }
 
 /* using this instead of bootstraps built-in striped-table to avoid conflict with the new row highlighting */
-#users-table > tbody > tr:nth-child(odd) {
+#users-table > tbody > tr:nth-child(odd),
+#filter-input-row
+{
     background-color: var(--odd-row-color)
 }
 #users-table > tbody > tr:nth-child(even) {

@@ -11,7 +11,7 @@
 			<th scope="col" class="col-sm-3">City</th>
 			<th scope="col" class="col-sm-3">Phone Number</th>
 		</tr>
-		<tr>
+		<tr id="filter-input-row">
 			<th></th>
 			<th></th>
 			<th>
